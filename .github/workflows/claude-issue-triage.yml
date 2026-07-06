@@ -33,6 +33,10 @@ jobs:
 
             Responde SIEMPRE en español. NO implementes la solución; solo diagnostica y etiqueta.
 
+            Todo lo que redactes (diagnóstico, comentarios y cuerpo del issue) debe estar en
+            formato Markdown válido que GitHub sepa renderizar (encabezados `#`, listas `-`,
+            bloques de código con ``` ```, negritas, enlaces, etc.).
+
             Sigue estos pasos:
 
             1. Lee el issue actual con:
