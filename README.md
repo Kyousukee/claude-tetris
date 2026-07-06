@@ -117,6 +117,7 @@ Contiene toda la lógica del juego. A grandes rasgos:
 - **Puntuación**: usa la tabla clásica `[0, 100, 300, 500, 800]` multiplicada por el nivel actual; el hard drop suma 2 puntos por celda recorrida y el soft drop 1 punto por fila.
 - **Nivel y velocidad**: el nivel sube cada 10 líneas; la velocidad de caída se calcula como `max(100, 1000 − (level − 1) × 90)` milisegundos.
 - **Ghost piece** (`ghostY`): proyecta la posición final de la pieza actual hacia abajo y la dibuja con `globalAlpha = 0.2`.
+- **Pieza bomba**: cada `BOMB_INTERVAL` (5) líneas eliminadas, la siguiente pieza (`next`) se sustituye por una bomba de 1×1 (`makeBomb`). Al asentarse (`explodeBomb`), destruye las celdas en un área 3×3 centrada en su posición, suma puntos por bloque destruido y aplica gravedad (`applyGravity`) para que los bloques que quedan flotando caigan y rellenen los huecos.
 
 ### Flujo del juego
 
