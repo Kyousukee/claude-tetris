@@ -1,0 +1,67 @@
+name: Claude Code Issue Triage
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  triage:
+    # Evita bucles: ignora ediciones originadas por un bot (p. ej. github-actions[bot]).
+    if: github.event.sender.type != 'Bot'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write # editar cuerpo del issue + aplicar/crear labels
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Run Claude Issue Triage
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --allowedTools "Bash(gh issue view:*),Bash(gh issue edit:*),Bash(gh label list:*),Bash(gh label create:*)"
+          prompt: |
+            Eres un asistente de triage para el issue #${{ github.event.issue.number }} de este
+            repositorio (un Tetris en JavaScript vanilla: HTML5 Canvas + CSS; toda la lógica de
+            juego vive en `game.js`, la estructura en `index.html` y los estilos en `style.css`).
+
+            Responde SIEMPRE en español. NO implementes la solución; solo diagnostica y etiqueta.
+
+            Sigue estos pasos:
+
+            1. Lee el issue actual con:
+                 gh issue view ${{ github.event.issue.number }} --json number,title,body,labels
+               Analiza el título y el cuerpo para entender el problema o la petición.
+
+            2. Elige labels adecuados (bug, enhancement, question, documentation, gameplay,
+               rendering, controls, needs-info, etc. — tú decides). Comprueba los existentes con
+               `gh label list`; crea con `gh label create "<nombre>" --color <hex> --description "<desc>"`
+               los que falten, y aplícalos con:
+                 gh issue edit ${{ github.event.issue.number }} --add-label "label1,label2"
+
+            3. Redacta un DIAGNÓSTICO GENERAL en español (no la solución), que incluya:
+                 - Resumen del problema o la petición.
+                 - Componente(s)/archivo(s) probablemente implicados (game.js, index.html, style.css)
+                   y, si es posible, funciones o secciones concretas.
+                 - Causa raíz hipotética.
+                 - Pistas o pasos sugeridos para abordar la futura solución.
+               Si falta información clave, indícalo y aplica el label needs-info.
+
+            4. Inserta el diagnóstico en el CUERPO del issue dentro de estos marcadores exactos,
+               reemplazando su contenido si ya existen (nunca dupliques la sección) y preservando
+               intacto el texto original del usuario que quede fuera de los marcadores:
+
+                 <!-- CLAUDE-DIAGNOSTICO:START -->
+                 ### 🤖 Diagnóstico automático
+                 ...tu diagnóstico aquí...
+                 <!-- CLAUDE-DIAGNOSTICO:END -->
+
+               Para actualizar el cuerpo, escribe el nuevo cuerpo completo a un archivo temporal y
+               usa:
+                 gh issue edit ${{ github.event.issue.number }} --body-file <archivo>
