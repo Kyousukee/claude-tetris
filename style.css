@@ -253,3 +253,144 @@ kbd {
 #restart-btn:hover {
   background: var(--accent-hover);
 }
+
+/* ---- Start screen ---- */
+#start-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 6px;
+  color: var(--accent);
+}
+
+.overlay-box #overlay-extra {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.overlay-box #overlay-extra.hidden {
+  display: none;
+}
+
+/* ---- Records / score table ---- */
+.records-summary {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.records-summary strong {
+  color: var(--accent);
+}
+
+.score-table-wrap {
+  width: 100%;
+  min-width: 200px;
+}
+
+.score-table-wrap .label {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.score-table-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.score-empty {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+}
+
+.score-table td {
+  padding: 3px 6px;
+  color: var(--fg-main);
+}
+
+.score-table td:first-child {
+  color: var(--muted);
+  width: 24px;
+}
+
+.score-table td:last-child {
+  text-align: right;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.score-table tr.highlight td {
+  color: var(--accent);
+  background: rgba(122, 162, 247, 0.15);
+  border-radius: 4px;
+}
+
+/* ---- Save score form ---- */
+.save-score-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.save-score-form.hidden {
+  display: none;
+}
+
+#player-name {
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  color: var(--fg-main);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 13px;
+  width: 130px;
+}
+
+#player-name:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+#save-score-btn {
+  background: var(--accent);
+  color: var(--bg-body);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#save-score-btn:hover {
+  background: var(--accent-hover);
+}
+
+.secondary-btn {
+  margin-top: 4px;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--kbd-border);
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.secondary-btn:hover {
+  color: var(--fg-main);
+  border-color: var(--accent);
+}
