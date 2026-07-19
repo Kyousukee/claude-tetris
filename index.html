@@ -44,7 +44,7 @@
             <li><kbd>↑</kbd> rotar</li>
             <li><kbd>↓</kbd> bajar</li>
             <li><kbd>Space</kbd> caída</li>
-            <li><kbd>P</kbd> pausa</li>
+            <li><kbd>P</kbd> / <kbd>Esc</kbd> pausa</li>
           </ul>
           <p class="bomb-hint">💣 Cada 5 líneas aparece una bomba: al asentarse destruye un área 3x3.</p>
         </div>
@@ -56,6 +56,38 @@
         <p id="overlay-title">GAME OVER</p>
         <p id="overlay-score"></p>
         <button id="restart-btn">Reiniciar</button>
+      </div>
+    </div>
+
+    <div id="pause-menu" class="overlay hidden">
+      <div class="overlay-box pause-box">
+        <p id="pause-title">PAUSA</p>
+
+        <div class="pause-level">
+          <span class="label">NIVEL INICIAL</span>
+          <div class="stepper">
+            <button id="level-minus-btn" type="button" aria-label="Disminuir nivel inicial">−</button>
+            <span id="start-level-value">1</span>
+            <button id="level-plus-btn" type="button" aria-label="Aumentar nivel inicial">+</button>
+          </div>
+        </div>
+
+        <div class="pause-actions">
+          <button id="resume-btn" type="button">Reanudar</button>
+          <button id="pause-restart-btn" type="button">Reiniciar</button>
+          <button id="toggle-controls-btn" type="button">Ver controles</button>
+        </div>
+
+        <div class="panel-section controls hidden" id="pause-controls">
+          <span class="label">CONTROLS</span>
+          <ul>
+            <li><kbd>←</kbd><kbd>→</kbd> mover</li>
+            <li><kbd>↑</kbd> rotar</li>
+            <li><kbd>↓</kbd> bajar</li>
+            <li><kbd>Space</kbd> caída</li>
+            <li><kbd>P</kbd> / <kbd>Esc</kbd> pausa</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
