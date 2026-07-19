@@ -127,6 +127,13 @@ body {
   background: var(--board-bg);
   border-radius: 4px;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  transition: background 0.2s;
+}
+
+/* ---- Skin: neon (forces a near-black board regardless of light/dark theme) ---- */
+:root[data-skin="neon"] #board,
+:root[data-skin="neon"] #next-canvas {
+  background: #05050a;
 }
 
 /* ---- Panel lateral ---- */
@@ -164,6 +171,36 @@ body {
   border: 1px solid var(--border);
   background: var(--board-bg);
   border-radius: 4px;
+}
+
+/* ---- Selector de skin ---- */
+.skin-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.skin-btn {
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  color: var(--kbd-color);
+  border-radius: 4px;
+  padding: 6px 4px;
+  font-size: 11px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.skin-btn:hover {
+  border-color: var(--accent);
+}
+
+.skin-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-body);
+  font-weight: 700;
 }
 
 /* ---- Controles ---- */
