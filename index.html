@@ -55,7 +55,37 @@
       <div class="overlay-box">
         <p id="overlay-title">GAME OVER</p>
         <p id="overlay-score"></p>
+        <div id="overlay-extra" class="hidden">
+          <div class="records-summary">
+            <span>Mejor combo: <strong id="overlay-best-combo">0</strong></span>
+            <span>Máx. líneas: <strong id="overlay-max-lines">0</strong></span>
+          </div>
+          <div class="score-table-wrap">
+            <p class="label">Mejores puntuaciones</p>
+            <div id="overlay-score-table" class="score-table-container"></div>
+          </div>
+          <div id="save-score-form" class="save-score-form hidden">
+            <input type="text" id="player-name" maxlength="12" placeholder="Tu nombre" />
+            <button id="save-score-btn">Guardar</button>
+          </div>
+        </div>
         <button id="restart-btn">Reiniciar</button>
+      </div>
+    </div>
+
+    <div id="start-screen" class="overlay">
+      <div class="overlay-box">
+        <p id="start-title">TETRIS</p>
+        <div class="records-summary">
+          <span>Mejor combo: <strong id="start-best-combo">0</strong></span>
+          <span>Máx. líneas: <strong id="start-max-lines">0</strong></span>
+        </div>
+        <div class="score-table-wrap">
+          <p class="label">Mejores puntuaciones</p>
+          <div id="start-score-table" class="score-table-container"></div>
+        </div>
+        <button id="play-btn">Jugar</button>
+        <button id="reset-records-btn" class="secondary-btn">Reiniciar records</button>
       </div>
     </div>
   </div>
